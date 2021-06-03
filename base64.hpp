@@ -22,5 +22,7 @@ auto b64encode(const std::array<byte, SIZE> &bytes) -> std::string {
                SIZE);
   return std::string(base64_string.get());
 }
+
+auto b64decode(const std::string& encoded, size_t* size=nullptr)->byte*;
 } // namespace base64
 } // namespace sieve
