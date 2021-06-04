@@ -2,7 +2,8 @@
 #include "../base64.hpp"
 #include <cstring>
 #include <typeinfo>
-TEST(base64, sizeEqual)
+#include <array>
+TEST(base64, raw_array_sizeEqual)
 {
     unsigned char origin[] = "string";
     auto encoded = sieve::base64::b64encode(origin);
@@ -12,7 +13,7 @@ TEST(base64, sizeEqual)
     delete []decoded;
 }
 
-TEST(base64, typeEqual)
+TEST(base64, raw_array_typeEqual)
 {
     unsigned char origin[] = "string";
     auto size = sizeof(origin);
@@ -23,11 +24,19 @@ TEST(base64, typeEqual)
     delete []decoded;
 }
 
-TEST(base64, contentEqual)
+TEST(base64, raw_array_contentEqual)
 {
     unsigned char origin[] = "string";
     auto encoded = sieve::base64::b64encode(origin);
     auto decoded = sieve::base64::b64decode(encoded);
     EXPECT_TRUE(0==std::memcmp(origin,decoded,sizeof(origin)));
     delete []decoded;
+}
+
+TEST(base64,std_array_contentEqual)
+{
+    std::array<unsigned char,7> origin{"string"};
+    auto encoded = sieve::base64::b64encode(origin);
+    auto decoded = sieve::base64::b64decode(encoded);
+    EXPECT_TRUE(0==std::memcmp(origin.data(),decoded,origin.size()));
 }

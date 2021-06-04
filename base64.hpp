@@ -24,7 +24,7 @@ auto b64encode(const std::array<byte, SIZE> &bytes) -> std::string
     std::shared_ptr<char[]> base64_string(new char[Base64encode_len(SIZE)]);
     //½áÎ²°üº¬'\0'
     Base64encode(base64_string.get(),
-                 reinterpret_cast<const char *>(bytes),
+                 reinterpret_cast<const char *>(bytes.data()),
                  SIZE);
     return std::string(base64_string.get());
 }
