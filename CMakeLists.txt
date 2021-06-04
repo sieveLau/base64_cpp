@@ -1,3 +1,9 @@
+cmake_minimum_required(VERSION 3.8)
+project(base64cpp)
+
+set(CXX_STANDARD 11)
+set(CXX_STANDARD_REQUIRED ON)
+
 add_subdirectory(c)
 add_library(base64 STATIC base64.cpp base64.hpp)
 target_link_libraries(base64 base64c)
