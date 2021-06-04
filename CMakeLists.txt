@@ -1,8 +1,15 @@
-cmake_minimum_required(VERSION 3.8)
-project(base64cpp)
+cmake_minimum_required(VERSION 3.16)
 
+if(TARGET base64)
+  return()
+endif(TARGET base64)
+
+
+
+project(base64cpp)
 set(CXX_STANDARD 11)
 set(CXX_STANDARD_REQUIRED ON)
+
 
 add_subdirectory(c)
 add_library(base64 STATIC base64.cpp base64.hpp)
