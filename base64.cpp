@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "base64.hpp"
 
 auto sieve::base64::b64decode(const std::string &encoded, size_t *size) -> byte *

@@ -1,1 +1,0 @@
-add_library(base64c STATIC base64.c base64.h)
